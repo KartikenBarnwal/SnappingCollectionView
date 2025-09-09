@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SnappingFlowLayoutDelegate: AnyObject {
+    func collectionView(_ collectionView: UICollectionView, didSnapTo indexPath: IndexPath)
+}
+
 final class SnappingFlowLayout: UICollectionViewFlowLayout {
     
     /// How far around the proposed area we look for candidate cells.
@@ -22,6 +26,8 @@ final class SnappingFlowLayout: UICollectionViewFlowLayout {
     /// Larger → even relatively bigger drags still count as “tiny,” so more swipes get promoted to force next/previous.
     /// Smaller → only really short drags are considered “tiny,” reducing sensitivity.
     public var distanceThresholdMultiplier: CGFloat = 0.75
+    
+    weak var snappingDelegate: SnappingFlowLayoutDelegate?
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         guard let collectionView = collectionView else { return proposedContentOffset }
@@ -81,6 +87,8 @@ final class SnappingFlowLayout: UICollectionViewFlowLayout {
             }
         }
         
+        snappingDelegate?.collectionView(collectionView, didSnapTo: targetAttr.indexPath)
+        
         // Offset that would center that item
         var targetX = targetAttr.center.x - halfWidth
         
@@ -93,3 +101,4 @@ final class SnappingFlowLayout: UICollectionViewFlowLayout {
         return CGPoint(x: targetX, y: proposedContentOffset.y)
     }
 }
+

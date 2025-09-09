@@ -7,18 +7,23 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, SnappingFlowLayoutDelegate {
     
     private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = SnappingFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.itemSize = CGSize(width: 250, height: 300)
+        layout.snappingDelegate = self
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        
+        // MARK: Important property
+        collectionView.decelerationRate = .fast
+        
         return collectionView
     }()
 
@@ -29,7 +34,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 150),
+            collectionView.heightAnchor.constraint(equalToConstant: 350),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
@@ -59,6 +64,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         label.font = .systemFont(ofSize: 36, weight: .bold)
         
         return cell
+    }
+    
+    // MARK: - Custom Flow Layout Delegate
+    func collectionView(_ collectionView: UICollectionView, didSnapTo indexPath: IndexPath) {
+        let feedbackGenerator = UISelectionFeedbackGenerator()
+        feedbackGenerator.selectionChanged()
     }
 }
 
