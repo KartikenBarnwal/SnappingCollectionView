@@ -10,22 +10,9 @@
 		5A6F072B2E704B3B00D461A2 /* SnappingCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnappingCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		5A6F073D2E704B3D00D461A2 /* Exceptions for "SnappingCollectionView" folder in "SnappingCollectionView" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 5A6F072A2E704B3B00D461A2 /* SnappingCollectionView */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5A6F072D2E704B3B00D461A2 /* SnappingCollectionView */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				5A6F073D2E704B3D00D461A2 /* Exceptions for "SnappingCollectionView" folder in "SnappingCollectionView" target */,
-			);
 			path = SnappingCollectionView;
 			sourceTree = "<group>";
 		};
