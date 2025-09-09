@@ -4,7 +4,7 @@ A custom `UICollectionViewFlowLayout` that provides smooth snapping behavior for
 
 ## Demo
 
-![SnappingCollectionView Demo](demo.gif)
+<img src="demo.gif" width="300" alt="SnappingCollectionView Demo">
 
 *Smooth horizontal scrolling with automatic cell centering and snapping behavior*
 
