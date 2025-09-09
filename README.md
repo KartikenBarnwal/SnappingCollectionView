@@ -2,6 +2,12 @@
 
 A custom `UICollectionViewFlowLayout` that provides smooth snapping behavior for horizontal scrolling collection views. This layout automatically centers cells and provides a paging-like experience with customizable snapping parameters.
 
+## Demo
+
+![SnappingCollectionView Demo](demo.gif)
+
+*Smooth horizontal scrolling with automatic cell centering and snapping behavior*
+
 ## Features
 
 - 🎯 **Automatic Cell Centering**: Cells automatically snap to the center of the collection view
